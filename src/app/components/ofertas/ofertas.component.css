@@ -1,0 +1,113 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Atributos generales */
+
+#body {
+  background-color: #efefef;
+  margin: 0;
+  padding: 0;
+}
+
+/* Titulo */
+
+.ofertas {
+  font-size: 36px;
+  font-family: "Courier New", Courier, monospace;
+  position: relative;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.ofertas::after {
+  content: "";
+  width: 80%;
+  border-bottom: 1px solid #8acdea;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Ofertas */
+
+.container-ofertas {
+  padding-bottom: 2rem;
+}
+
+/* Cards ofertas */
+
+.card-text {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 15px;
+}
+
+.card-body {
+  border-end-end-radius: 1.5rem;
+  background-color: #ffffff;
+}
+
+.card {
+  border-end-end-radius: 2rem;
+  box-shadow: 0 0 10px 2px rgba(255, 255, 255, 1);
+}
+
+.card-img-top {
+  height: 350px;
+  width: 100%;
+}
+
+.card-title {
+  font-family: "Courier New", Courier, monospace;
+  padding: 15px;
+  background-color: #8acdea;
+  color: #fff;
+  font-weight: 550;
+  margin-bottom: 0px !important;
+}
+
+.col-card {
+  padding-bottom: 20px;
+}
+
+.btn-card {
+  background-color: #8acdea;
+  color: #ffffff;
+  box-shadow: 0 0 3px 1.5px rgba(0, 0, 0, 0.1);
+}
+
+/* Ofertas */
+
+.sbadge {
+  font-family: "Courier New", Courier, monospace;
+  background-color: #8acdea;
+}
+
+.hola:hover {
+  color: #363738;
+  text-decoration: none;
+}
+
+.lista-o {
+  list-style: none;
+}
+
+.p-oft {
+  text-decoration: line-through;
+}
+
+.p-pre {
+  color: #e31118;
+}
+
+.cont-pd {
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.ul-oft {
+  margin: 0;
+  background-color: #efefef;
+}

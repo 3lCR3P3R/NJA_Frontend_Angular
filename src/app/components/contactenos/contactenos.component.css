@@ -1,0 +1,73 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+.nav-link {
+  text-align: right;
+  text-decoration: none !important;
+}
+
+body {
+  background-color: transparent;
+  color: #4c4c4c;
+  font-family: Verdana !important;
+  font-size: 17px;
+}
+
+.Principal {
+  background-repeat: no-repeat;
+  background-position: center center;
+  /* max-height: 150%; */
+  max-width: 100%;
+  background-attachment: fixed;
+  background-size: cover;
+  filter: blur(7px);
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: -1;
+}
+
+label,
+input[type="submit"] {
+  margin-top: 10px;
+  color: #fff;
+}
+
+.ebody {
+  background-color: #d4d4d4;
+  border: 2px solid #d4d4d4;
+  border-radius: 8px;
+  margin: 30px auto;
+  width: 700px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+}
+
+.jumbotron {
+  background-color: #d4d4d4;
+  border-radius: 8px 8px 0px 0px;
+  margin-bottom: 0px;
+  padding: 16px;
+  -webkit-border-radius: 8px 8px 0px 0px;
+  -moz-border-radius: 8px 8px 0px 0px;
+}
+
+.jumbotron h1 {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif !important;
+  color: #fff;
+  font-size: 70px;
+  text-align: center;
+  text-shadow: 0px 1px #4c4c4c;
+  background-color: #d4d4d4;
+}
+
+.fcontacto {
+  padding: 15px;
+}
+
+.logo {
+  margin-bottom: 6px;
+  text-align: center;
+}

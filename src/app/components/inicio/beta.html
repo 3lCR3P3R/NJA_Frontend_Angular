@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<body id="body">
+  <header class="header">
+    <div class="container-fluid d-flex justify-content-center">
+      <div class="row">
+        <div class="col">
+          <h1 class="titulo text-center">
+            <img src="./assets/img/pod.png" alt="" width="60" height="44" class="d-inline-block align-text-top" />
+            N'T Just Aesthetics
+          </h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid d-flex justify-content-center" style="padding-bottom: 15px">
+      <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/inicio']">Inicio</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  Hombre
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li routerLinkActive="active">
+                    <a class="dropdown-item" href="">Camisetas</a>
+                  </li>
+                  <li routerLinkActive="active">
+                    <a class="dropdown-item" href="">Pantalones</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  Mujer
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li routerLinkActive="active">
+                    <a class="dropdown-item" href="">Blusas</a>
+                  </li>
+                  <li routerLinkActive="active">
+                    <a class="dropdown-item" href="">Camisetas</a>
+                  </li>
+                  <li routerLinkActive="active">
+                    <a class="dropdown-item" href="">Faldas</a>
+                  </li>
+                  <li routerLinkActive="active">
+                    <a class="dropdown-item" href="">Pantalones</a>
+                  </li>
+                  <li routerLinkActive="active">
+                    <a class="dropdown-item" href="">Vestidos</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  Niña/o
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li routerLinkActive="active">
+                    <a class="dropdown-item" href="">Blusas</a>
+                  </li>
+                  <li routerLinkActive="active">
+                    <a class="dropdown-item" href="">Camisetas</a>
+                  </li>
+                  <li routerLinkActive="active">
+                    <a class="dropdown-item" href="">Faldas</a>
+                  </li>
+                  <li routerLinkActive="active">
+                    <a class="dropdown-item" href="">Pantalones</a>
+                  </li>
+                  <li routerLinkActive="active">
+                    <a class="dropdown-item" href="">Vestidos</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/ofertas']">Ofertas</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="">Vender</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <router-outlet></router-outlet>
+
+  <div class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-5">
+          <p class="footer-p">Empresa</p>
+          <ul>
+            <li>
+              <a class="acontac" href="./pages/info.html#quienes_somos">Acerca de N'T Just Aesthetics</a>
+            </li>
+            <li>
+              <a class="acontac" href="./pages/info.html#mision_vision">Misión y Visión</a>
+            </li>
+            <li>
+              <a class="acontac" href="./pages/info.html#objetivos_corporativos">Objetivos Corporativos</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-sm-4">
+          <p class="footer-p">Atención al cliente</p>
+          <ul>
+            <li>
+              <a class="acontac" href="./pages/contactenos.html">Contáctenos</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-sm-3">
+          <p class="footer-p">Siguenos</p>
+          <ul>
+            <li>
+              <a class="acontac" href=""><img src="./assets/img/facebook.png" class="social" alt="facebook" />
+                Facebook</a>
+            </li>
+            <li>
+              <a class="acontac" href=""><img src="./assets/img/instagram.png" class="social" alt="instagram" />
+                Instagram</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

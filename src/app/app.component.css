@@ -1,0 +1,78 @@
+/* Atributos generales */
+
+#body {
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #efefef;
+	margin: 0;
+	padding: 0;
+}
+
+/* Media Queries Cards */
+
+/* Anchos maximo por tamaño de pantallas */
+
+@media (min-width: 769px) and (max-width: 1000px) {
+	.container,
+	.container-lg,
+	.container-md,
+	.container-sm {
+		max-width: 768px;
+	}
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+	.container,
+	.container-sm {
+		max-width: 680px;
+	}
+}
+
+/* Anchos para  */
+
+@media (min-width: 576px) and (max-width: 1000px) {
+	.col-sm-3 {
+		flex: 0 0 auto;
+		width: 50%;
+	}
+}
+
+@media (min-width: 1001px) and (max-width: 1400px) {
+	.col-sm-3 {
+		flex: 0 0 auto;
+		width: 33%;
+	}
+}
+
+/* Pie de pagina */
+
+.footer {
+	background-color: #363738;
+	height: auto;
+	padding-bottom: 2rem;
+	padding-top: 1rem;
+}
+
+ul {
+	color: #8acdea;
+	list-style: symbols();
+}
+
+li .acontac {
+	color: #efefef;
+	text-decoration: none;
+}
+
+li a:hover {
+	color: #8acdea;
+	text-decoration: none;
+}
+
+.social {
+	width: 36px;
+}
+
+.footer-p {
+	font-family: "Courier New", Courier, monospace;
+	padding: 10px;
+	color: #8acdea;
+}

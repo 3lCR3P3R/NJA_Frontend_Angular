@@ -1,0 +1,19 @@
+/* Titulo */
+
+.titulo {
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+  font-family: "Lucida Handwriting", Courier, monospace;
+}
+
+/* Barra de navegación */
+
+.navbar-light .navbar-nav .nav-link {
+  font-size: 17px;
+  padding: 0.8rem;
+}
+
+.bg-edit {
+  background-color: #8acdea;
+  opacity: 0.95;
+}

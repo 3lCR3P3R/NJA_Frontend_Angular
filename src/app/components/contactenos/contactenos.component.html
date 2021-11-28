@@ -1,0 +1,41 @@
+<img src="./assets/img/ropafondo.jpg" alt="Contactenos" class="Principal">
+<div class="ebody">
+  <a class="nav-link" href="../index.html">Volver a Inicio
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+      class="bi bi-arrow-left-square-fill" viewBox="0 0 16 16">
+      <path
+        d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1z" />
+    </svg>
+  </a>
+
+  <div class="fcontacto">
+    <div class="logo">
+      <img src="./assets/img/pod.png" alt="Contactenos" height="200" width="300">
+    </div>
+    <div class="jumbotron">
+      <h1>Contáctanos </h1>
+    </div>
+    <form method="POST" name="fcontacto" id="fcontacto" action="./">
+      <div class="row">
+        <div class="col-md-6">
+          <label>Tu nombre:</label>
+          <input type="text" name="name" id="name" class="form-control" (keyup)="keyUpName($event)">
+        </div>
+        <div class="col-md-6">
+          <label>Tu email:</label>
+          <input type="text" name="email" id="email" class="form-control" (keyup)="keyUpEmail($event)">
+        </div>
+      </div>
+      <label>Asunto:</label>
+      <input type="text" name="asunto" id="asunto" class="form-control" (keyup)="keyUpAsunto($event)">
+      <label>Tu mensaje:</label>
+      <textarea name="mensaje" id="mensaje" cols="30" rows="10" class="form-control"
+        (keyup)="keyUpMessage($event)"></textarea>
+      <div class="d-flex justify-content-center">
+        <input type="button" class="btn btn-info" value="Enviar" (click)="send()">
+      </div>
+      <div id="repuesta" style="display: none;"></div>
+    </form>
+  </div>
+
+</div>
