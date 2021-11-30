@@ -8,10 +8,11 @@ import {Title} from "@angular/platform-browser";
 })
 export class ContactenosComponent {
   title = 'contador';
-  name = "";
-  email = "";
-  asunto = "";
-  message = "";
+  name:String = "";
+  email:String = "";
+  asunto:String = "";
+  message:String = "";
+  leido:String = "N";
 
   constructor(private titleService:Title) {
     this.titleService.setTitle("NJA - Contactenos");
@@ -35,12 +36,13 @@ export class ContactenosComponent {
 
   send() {
 
-    fetch("http://localhost:8080/nja/api/v1/contactenos", {
+    fetch("http://localhost:8080/contactenos", {
       "body": JSON.stringify({
-        "message": this.message,
+        "mensaje": this.message,
         "asunto": this.asunto,
-        "name": this.name,
-        "email": this.email
+        "nombre": this.name,
+        "email": this.email,
+        "leido": this.leido
       }),
       "headers": { "Content-Type": "application/json" },
       "method": "POST",
