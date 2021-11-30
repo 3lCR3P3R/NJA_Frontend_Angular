@@ -10,6 +10,6 @@ export class TestService {
 
   }
    send(data:any){
-    this.http.post<any> ("http://localhost:8080/api/contactanos", data)
+    this.http.post<any> ("http://localhost:8080/nja/api/v1/contactenos", data)
   }
 }

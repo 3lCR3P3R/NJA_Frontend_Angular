@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-contactenos',
@@ -11,6 +12,10 @@ export class ContactenosComponent {
   email = "";
   asunto = "";
   message = "";
+
+  constructor(private titleService:Title) {
+    this.titleService.setTitle("NJA - Contactenos");
+  }
 
   keyUpName(event: any) {
     this.name = event.target.value;
@@ -30,7 +35,7 @@ export class ContactenosComponent {
 
   send() {
 
-    fetch("http://localhost:8080/api/contactanos", {
+    fetch("http://localhost:8080/nja/api/v1/contactenos", {
       "body": JSON.stringify({
         "message": this.message,
         "asunto": this.asunto,

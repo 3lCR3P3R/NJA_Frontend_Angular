@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -6,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor() { }
+  location: Location;
+  constructor(location: Location) {
+    this.location = location;
+  }
 
   ngOnInit(): void {
   }

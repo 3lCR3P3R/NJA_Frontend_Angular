@@ -15,9 +15,15 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
-	declarations: [AppComponent, OfertasComponent, InicioComponent, CategoriasComponent, ProductosComponent, QuienesSomosComponent, ContactenosComponent, HeaderComponent, FooterComponent],
-	imports: [BrowserModule, RouterModule.forRoot(RUTAS, { useHash: true })],
-	providers: [],
-	bootstrap: [AppComponent],
+  declarations: [AppComponent, OfertasComponent, InicioComponent, CategoriasComponent, ProductosComponent, QuienesSomosComponent, ContactenosComponent, HeaderComponent, FooterComponent],
+  imports: [BrowserModule, RouterModule.forRoot(RUTAS, {
+    useHash: true,
+    anchorScrolling: 'enabled',
+    onSameUrlNavigation: 'reload',
+    scrollPositionRestoration: 'enabled'
+  })],
+  providers: [],
+  bootstrap: [AppComponent],
 })
-export class AppModule {}
+
+export class AppModule { }
