@@ -38,10 +38,10 @@ export class ContactenosComponent {
 
     fetch("http://localhost:8080/contactenos", {
       "body": JSON.stringify({
-        "mensaje": this.message,
-        "asunto": this.asunto,
         "nombre": this.name,
         "email": this.email,
+        "asunto": this.asunto,
+        "mensaje": this.message,
         "leido": this.leido
       }),
       "headers": { "Content-Type": "application/json" },
