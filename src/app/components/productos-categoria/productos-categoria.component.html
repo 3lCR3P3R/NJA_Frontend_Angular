@@ -1,11 +1,11 @@
 <main>
   <div class="txt d-flex justify-content-center">
-    <h2 class="productos text-center">PRODUCTOS</h2>
+    <h2 class="productos text-center">{{categoria.toUpperCase()}}</h2>
   </div>
 
   <div *ngIf="productos.length == 0" class="txt d-flex justify-content-center">
     <div class="text-center">
-        <h2 class="apiNotWork">No hay productos</h2>
+        <h2 class="apiNotWork">No hay {{categoria}}</h2>
     </div>
   </div>
 

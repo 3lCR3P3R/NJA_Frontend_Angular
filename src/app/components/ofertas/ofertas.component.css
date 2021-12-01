@@ -12,6 +12,14 @@
 
 /* Titulo */
 
+.apiNotWork {
+  font-size: 36px;
+  font-family: "Courier New", Courier, monospace;
+  position: relative;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
 .ofertas {
   font-size: 36px;
   font-family: "Courier New", Courier, monospace;

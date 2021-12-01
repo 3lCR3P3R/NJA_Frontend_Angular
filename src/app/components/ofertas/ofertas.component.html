@@ -3,7 +3,13 @@
     <h2 class="ofertas text-center">OFERTAS</h2>
   </div>
 
-  <div class="container container-ofertas">
+  <div *ngIf="ofertas.length == 0" class="txt d-flex justify-content-center">
+    <div class="text-center">
+        <h2 class="apiNotWork">No hay Ofertas</h2>
+    </div>
+  </div>
+
+  <div class="container container-ofertas" *ngIf="ofertas.length != 0">
     <div class="row">
 
       <div class="col-sm-3 col-card" *ngFor="let oferta of ofertas; let i = index">
@@ -22,21 +28,19 @@
               </h4>
             </li>
           </ul>
-          <img src="./assets/img/ofertas/{{oferta.imagen}}" class="card-img-top" alt="..." />
-          <h5 class="card-title text-center">{{oferta.nombre}}</h5>
+          <img src="./assets/img/productos/{{oferta.producto.imagen}}" class="card-img-top" alt="..." />
+          <h5 class="card-title text-center">{{oferta.producto.nombre}}</h5>
           <div class="card-body">
+            <p class="card-text">{{oferta.producto.descripcion}}</p>
             <p class="card-text">
-              {{oferta.descripcion}}
-            </p>
-            <p class="card-text">
-              <small class="text-muted">Color: {{oferta.color}}</small>
+              <small class="text-muted">Color: {{oferta.producto.color}}</small>
             </p>
             <div class="cont-pd">
               <p class="float-end p-pre">${{oferta.precioDescuento}}</p>
-              <p class="p-oft">${{oferta.precio}}</p>
+              <p class="p-oft">${{oferta.producto.precio}}</p>
             </div>
             <div class="d-flex justify-content-center">
-              <a [routerLink]="['/cart', oferta.id]" class="btn btn-card">Añadir Producto</a>
+              <a [routerLink]="['/cart', 'oferta', oferta.id]" class="btn btn-card">Añadir Producto</a>
             </div>
           </div>
         </div>

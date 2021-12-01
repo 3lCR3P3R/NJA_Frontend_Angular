@@ -31,7 +31,7 @@ export class OfertasComponent implements OnInit {
       // console.log(this.ofertasResponse);
 
       this.ofertasResponse.forEach((oferta) => {
-        if (oferta.activo == "S" && oferta.cantidad > 0) this.ofertas.push(oferta);
+        if (oferta.activo == "S" && oferta.producto.cantidad > 0) this.ofertas.push(oferta);
       });
       // console.log("ofertas");
       // console.log(this.ofertas);

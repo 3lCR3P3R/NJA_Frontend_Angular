@@ -15,9 +15,10 @@ import { QuienesSomosComponent } from './components/quienes-somos/quienes-somos.
 import { ContactenosComponent } from './components/contactenos/contactenos.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ProductosCategoriaComponent } from './components/productos-categoria/productos-categoria.component';
 
 @NgModule({
-  declarations: [AppComponent, OfertasComponent, InicioComponent, CategoriasComponent, ProductosComponent, QuienesSomosComponent, ContactenosComponent, HeaderComponent, FooterComponent],
+  declarations: [AppComponent, OfertasComponent, InicioComponent, CategoriasComponent, ProductosComponent, QuienesSomosComponent, ContactenosComponent, HeaderComponent, FooterComponent, ProductosCategoriaComponent],
   imports: [BrowserModule,
     FormsModule,
     ReactiveFormsModule,
