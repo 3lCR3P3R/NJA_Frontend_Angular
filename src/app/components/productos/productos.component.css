@@ -1,4 +1,23 @@
-/* Cards Categorias */
+/* Cards Productos */
+
+main {
+  margin-bottom: 30px;
+}
+.productos {
+  font-size: 36px;
+  font-family: "Courier New", Courier, monospace;
+  position: relative;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.productos::after {
+  content: "";
+  width: 80%;
+  border-bottom: 1px solid #8acdea;
+  display: inline-block;
+  vertical-align: middle;
+}
 
 .card-body {
   border-end-end-radius: 1.5rem;

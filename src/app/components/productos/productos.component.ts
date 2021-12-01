@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Title} from "@angular/platform-browser";
+import { ApiService } from 'src/app/servicios/api.service';
 
 @Component({
   selector: 'app-productos',
@@ -8,9 +9,25 @@ import {Title} from "@angular/platform-browser";
 })
 export class ProductosComponent implements OnInit {
 
-  constructor(private titleService:Title) {
+  productos:any[] = [];
+  productosResponse:any[] = [];
+
+  constructor(private titleService:Title, private apiService:ApiService) {
     this.titleService.setTitle("NJA - Productos");
-  }
+
+    this.apiService.getProductos().subscribe((response) => {
+      this.productosResponse = JSON.parse(JSON.stringify(response));
+
+      // console.log("response");
+      // console.log(this.productosResponse);
+
+      this.productosResponse.forEach((producto) => {
+        if (producto.activo == "S" && producto.cantidad > 0) this.productos.push(producto);
+      });
+      // console.log("productos");
+      // console.log(this.productos);
+    });
+   }
 
   ngOnInit(): void {
   }

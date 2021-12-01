@@ -1,64 +1,85 @@
 import { Component, OnInit } from '@angular/core';
 import {Title} from "@angular/platform-browser";
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ApiService } from 'src/app/servicios/api.service';
 
 @Component({
   selector: 'app-contactenos',
   templateUrl: './contactenos.component.html',
   styleUrls: ['./contactenos.component.css']
 })
-export class ContactenosComponent {
-  title = 'contador';
-  name:String = "";
-  email:String = "";
-  asunto:String = "";
-  message:String = "";
-  leido:String = "N";
+export class ContactenosComponent implements OnInit {
 
-  constructor(private titleService:Title) {
+  formulario: FormGroup;
+
+  error:boolean =  false;
+  enviado:boolean = false;
+
+  leido:string = "N";
+
+  constructor(private formBuilder:FormBuilder, private titleService:Title, private apiService:ApiService) {
     this.titleService.setTitle("NJA - Contactenos");
+
+    this.formulario = this.formBuilder.group({
+      nombre: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      asunto: ['', Validators.required],
+      mensaje: ['', Validators.required]
+    });
   }
 
-  keyUpName(event: any) {
-    this.name = event.target.value;
+  ngOnInit(): void {
   }
 
-  keyUpEmail(event: any) {
-    this.email = event.target.value;
+  get nombreNoValido(){
+    return this.formulario.get('nombre')?.invalid && this.formulario.get('nombre')?.touched;
   }
 
-  keyUpAsunto(event: any) {
-    this.asunto = event.target.value;
+  get emailNoValido(){
+    return this.formulario.get('email')?.invalid && this.formulario.get('email')?.touched;
   }
 
-  keyUpMessage(event: any) {
-    this.message = event.target.value;
+  get asuntoNoValido(){
+    return this.formulario.get('asunto')?.invalid && this.formulario.get('asunto')?.touched;
   }
 
-  send() {
+  get mensajeNoValido(){
+    return this.formulario.get('mensaje')?.invalid && this.formulario.get('mensaje')?.touched;
+  }
 
-    fetch("http://localhost:8080/contactenos", {
-      "body": JSON.stringify({
-        "nombre": this.name,
-        "email": this.email,
-        "asunto": this.asunto,
-        "mensaje": this.message,
-        "leido": this.leido
-      }),
-      "headers": { "Content-Type": "application/json" },
-      "method": "POST",
-      "mode": "cors"
-    }).then(response => {
-      if (response.ok) {
-        response.json().then(customer => {
-          console.log(customer);
-        }).catch(error => {
-          console.log(error);
-        });
-      } else {
-        console.log(1);
+  guardarDatos():any {
+    if(this.formulario.invalid){
+
+      Object.values(this.formulario.controls).forEach(control=>{
+        control.markAsTouched();
+      })
+
+      return;
+
+    }
+
+    this.error = false;
+
+    let contacto = {
+      id: 0,
+      nombre: '',
+      email: '',
+      asunto: '',
+      mensaje: '',
+      leido: 'N'
+    }
+
+    this.apiService.sendContactenos(this.formulario.value.nombre, this.formulario.value.email, this.formulario.value.asunto, this.formulario.value.mensaje, this.leido).subscribe((response) => {
+      console.log(response)
+      contacto = JSON.parse(JSON.stringify(response));
+      console.log(contacto);
+      if(contacto.id==0){
+        this.error = true;
       }
-    }).catch(error => {
-      console.log(error);
+      else{
+        this.error = false;
+        this.enviado = true;
+      }
     });
   }
 }

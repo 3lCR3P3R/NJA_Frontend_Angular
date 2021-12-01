@@ -1,65 +1,27 @@
-<div class="container container-productos">
-  <div class="row">
-
-    <div class="col-sm-3 col-card">
-      <div class="card">
-        <img src="./assets/img/LAUREN RALPH.jpg" class="card-img-top" alt="...">
-        <h5 class="card-title text-center">Ralph Lauren</h5>
-        <div class="card-body">
-          <p class="card-text"><small class="text-muted">Color: Rojo</small></p>
-          <p class="card-text">Camiseta de algodón con cuello barco</p>
-          <p class="card-text">$ 70.000</p>
-          <div class="d-flex justify-content-center">
-            <a href="#" class="btn btn-card">Añadir Producto</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-sm-3 col-card">
-      <div class="card">
-        <img src="./assets/img/Producto2.PNG" class="card-img-top" alt="...">
-        <h5 class="card-title text-center">Lejame Tr</h5>
-        <div class="card-body">
-          <p class="card-text"><small class="text-muted">Color: Cafe</small></p>
-          <p class="card-text">Conjunto de dos piezas</p>
-          <p class="card-text">$ 150.000</p>
-          <div class="d-flex justify-content-center">
-            <a href="#" class="btn btn-card">Añadir Producto</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-sm-3 col-card">
-      <div class="card">
-        <img src="./assets/img/Alex Evening.jpg" class="card-img-top" alt="...">
-        <h5 class="card-title text-center">Alex Evenings</h5>
-        <div class="card-body">
-          <p class="card-text"><small class="text-muted">Color: Azul marino</small></p>
-          <p class="card-text">Vestido de noche largo de lentejuelas con detalle de nudo en la parte delantera</p>
-          <p class="card-text">$ 400.000</p>
-          <div class="d-flex justify-content-center">
-            <a href="#" class="btn btn-card">Añadir Producto</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-sm-3 col-card">
-      <div class="card">
-        <img src="./assets/img/Levis.jpg" class="card-img-top" alt="...">
-        <h5 class="card-title text-center">Levi's Premium</h5>
-        <div class="card-body">
-          <p class="card-text"><small class="text-muted">Color: Negro</small></p>
-          <p class="card-text">Pantalon recto de tiro alto</p>
-          <p class="card-text">$ 100.000</p>
-          <div class="d-flex justify-content-center">
-            <a href="#" class="btn btn-card">Añadir Producto</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
+<main>
+  <div class="txt d-flex justify-content-center">
+    <h2 class="productos text-center">PRODUCTOS</h2>
   </div>
-</div>
+
+  <div class="container container-productos">
+    <div class="row">
+
+      <div class="col-sm-3 col-card" *ngFor="let producto of productos; let i = index">
+        <div class="card">
+          <img src="./assets/img/productos/{{producto.imagen}}" class="card-img-top" alt="{{producto.imagen}}">
+          <h5 class="card-title text-center">{{producto.nombre}}</h5>
+          <div class="card-body">
+            <p class="card-text"><small class="text-muted">Color: {{producto.color}}</small></p>
+            <p class="card-text">{{producto.descripcion}}</p>
+            <p class="card-text">$ {{producto.precio}}</p>
+            <div class="d-flex justify-content-center">
+              <a [routerLink]="['/cart', producto.id]" class="btn btn-card">Añadir Producto</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</main>

@@ -16,30 +16,72 @@
       <h1>Contáctanos </h1>
     </div>
 
-    <form method="POST" name="fcontacto" id="fcontacto" action="./">
+    <form action="" [formGroup]="formulario" (ngSubmit)="guardarDatos()" autocomplete="off">
       <div class="row">
         <div class="col-md-5 name">
           <label>Tu nombre:</label>
-          <input type="text" name="name" id="name" class="form-control" placeholder="Jhon Doe" (keyup)="keyUpName($event)">
+          <input type="text"
+          id="nombre"
+          name="nombre"
+          class="form-control"
+          formControlName="nombre"
+          placeholder="Jhon Doe"
+          [class.is-invalid]="nombreNoValido">
+          <small *ngIf="nombreNoValido" class="text-danger">Debe ingresar su nombre</small>
         </div>
 
         <div class="col-md-5 mail">
           <label>Tu email:</label>
-          <input type="email" name="email" id="email" class="form-control" placeholder="ejemplo@mail.com" (keyup)="keyUpEmail($event)">
+          <input type="email"
+          id="email"
+          name="email"
+          class="form-control"
+          formControlName="email"
+          placeholder="ejemplo@mail.com"
+          [class.is-invalid]="emailNoValido">
+          <small *ngIf="emailNoValido" class="text-danger">Debe ingresar su correo electronico</small>
         </div>
       </div>
 
-      <label>Asunto:</label>
-      <input type="text" name="asunto" id="asunto" class="form-control" (keyup)="keyUpAsunto($event)">
-
-      <label>Tu mensaje:</label>
-      <textarea name="mensaje" id="mensaje" cols="10" rows="6" class="form-control" (keyup)="keyUpMessage($event)"></textarea>
-
-      <div class="d-flex justify-content-center">
-        <input type="button" class="btn btn-info" value="Enviar" (click)="send()">
+      <div class="form-group">
+        <label>Asunto:</label>
+        <input type="text"
+          id="asunto"
+          name="asunto"
+          class="form-control"
+          formControlName="asunto"
+          [class.is-invalid]="asuntoNoValido">
+        <small *ngIf="asuntoNoValido" class="text-danger">Debe ingresar el asunto del mensaje</small>
       </div>
-      <div id="repuesta" style="display: none;"></div>
+
+      <div class="form-group">
+        <label>Tu mensaje:</label>
+        <textarea
+          id="mensaje"
+          name="mensaje"
+          class="form-control"
+          formControlName="mensaje"
+          [class.is-invalid]="mensajeNoValido" cols="10" rows="3" class="form-control"></textarea>
+        <small *ngIf="mensajeNoValido" class="text-danger">Debe ingresar un mensaje correcto</small>
+      </div>
+
+      <br>
+      <div class="d-flex justify-content-center">
+        <input type="submit" class="btn btn-info" value="Enviar">
+      </div>
     </form>
+
+    <br>
+    <div *ngIf="error" class="error-registro">
+      Los datos ingresados no pudieron ser enviados
+    </div>
+
+    <div *ngIf="enviado" class="alert-info">
+        Los datos se han realizado con exito
+        <br>
+        Por favor inicie sesion <a [routerLink]="['/home']">aqui</a>
+    </div>
+
   </div>
 
 </div>
