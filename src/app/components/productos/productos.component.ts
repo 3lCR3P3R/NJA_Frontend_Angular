@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Title} from "@angular/platform-browser";
 import { ApiService } from 'src/app/servicios/api.service';
+import { SesionService } from 'src/app/servicios/sesion.service';
 
 @Component({
   selector: 'app-productos',
@@ -12,7 +13,7 @@ export class ProductosComponent implements OnInit {
   productos:any[] = [];
   productosResponse:any[] = [];
 
-  constructor(private titleService:Title, private apiService:ApiService) {
+  constructor(private titleService:Title, private apiService:ApiService, public sesionService:SesionService) {
     this.titleService.setTitle("NJA - Productos");
 
     this.apiService.getProductos().subscribe((response) => {

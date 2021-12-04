@@ -1,0 +1,58 @@
+<img src="./assets/img/ropafondo.jpg" alt="Contactenos" class="Principal">
+
+<div class="ebody">
+  <a class="nav-link" href="../index.html">Volver a Inicio
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-square-fill" viewBox="0 0 16 16">
+      <path d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1z" />
+    </svg>
+  </a>
+
+  <div class="fcontacto">
+    <div class="logo">
+      <img src="./assets/img/pod.png" alt="Contactenos" height="200" width="300">
+    </div>
+
+    <div class="jumbotron">
+      <h1>Login </h1>
+    </div>
+
+    <form action="" [formGroup]="formulario" (ngSubmit)="verificarDatos()" autocomplete="off">
+
+      <div class="form-group">
+        <label>Usuario:</label>
+        <input type="text"
+          placeholder="Jhon Doe"
+          id="usuario"
+          name="usuario"
+          class="form-control"
+          formControlName="usuario"
+          [class.is-invalid]="usuarioNoValido">
+        <small *ngIf="usuarioNoValido" class="text-danger">Debe ingresar el usuario</small>
+      </div>
+
+      <div class="form-group">
+        <label>Contraseña:</label>
+        <input type="password"
+          placeholder="******"
+          id="password"
+          name="password"
+          class="form-control"
+          formControlName="password"
+          [class.is-invalid]="passwordNoValido">
+        <small *ngIf="passwordNoValido" class="text-danger">Debe ingresar la contraseña</small>
+      </div>
+
+      <br>
+      <div class="d-flex justify-content-center">
+        <input type="submit" class="btn btn-info" value="Enviar">
+      </div>
+    </form>
+
+    <br>
+    <div *ngIf="error" class="error-registro">
+      Contraseña y/o Usuario son incorrectos
+    </div>
+
+  </div>
+
+</div>

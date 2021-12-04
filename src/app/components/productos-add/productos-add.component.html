@@ -1,0 +1,130 @@
+<img src="./assets/img/ropafondo.jpg" alt="Contactenos" class="Principal">
+
+<div class="ebody">
+  <div class="fcontacto">
+
+    <div class="jumbotron">
+      <h1>Crea tu producto</h1>
+    </div>
+
+    <form action="" [formGroup]="formulario" (ngSubmit)="agregarProducto()" autocomplete="off">
+
+      <div class="row">
+        <div class="form-group col-md-5 izq">
+          <label>nombre:</label>
+          <input type="text"
+            placeholder="Camiseta"
+            [minlength]="5"
+            id="nombre"
+            name="nombre"
+            class="form-control"
+            formControlName="nombre"
+            [class.is-invalid]="nombreNoValido">
+          <small *ngIf="nombreNoValido" class="text-danger">Debe ingresar el nombre (min 5 letras)</small>
+        </div>
+
+        <div class="form-group col-md-5 der">
+          <label>marca:</label>
+          <input type="text"
+            placeholder="Gucci"
+            [minlength]="5"
+            id="marca"
+            name="marca"
+            class="form-control"
+            formControlName="marca"
+            [class.is-invalid]="marcaNoValido">
+          <small *ngIf="marcaNoValido" class="text-danger">Debe ingresar la marca (min 5 letras)</small>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-md-5 izq">
+          <label>Color:</label>
+          <input type="text"
+            placeholder="Rojo"
+            [minlength]="4"
+            id="color"
+            name="color"
+            class="form-control"
+            formControlName="color"
+            [class.is-invalid]="colorNoValido">
+          <small *ngIf="colorNoValido" class="text-danger">Debe ingresar el color (min 4 letras)</small>
+        </div>
+
+        <div class="form-group col-md-5 der">
+          <label>Precio:</label>
+          <input type="text"
+            placeholder="10000"
+            [minlength]="5"
+            id="precio"
+            name="precio"
+            class="form-control"
+            formControlName="precio"
+            onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"
+            [class.is-invalid]="precioNoValido">
+          <small *ngIf="precioNoValido" class="text-danger">Debe ingresar la precio (min valor 10000)</small>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-md-5 izq">
+          <label>Cantidad:</label>
+          <input type="text"
+            placeholder="1"
+            [minlength]="1"
+            [maxlength]="2"
+            id="cantidad"
+            name="cantidad"
+            class="form-control"
+            formControlName="cantidad"
+            onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"
+            [class.is-invalid]="cantidadNoValido">
+          <small *ngIf="cantidadNoValido" class="text-danger">Debe ingresar el cantidad (min 1 /max 99)</small>
+        </div>
+
+        <div class="form-group col-md-5 der">
+          <label>Descripcion:</label>
+          <input type="text"
+            placeholder="Camiseta original"
+            [minlength]="5"
+            id="descripcion"
+            name="descripcion"
+            class="form-control"
+            formControlName="descripcion"
+            [class.is-invalid]="descripcionNoValido">
+          <small *ngIf="descripcionNoValido" class="text-danger">Debe ingresar la descripcion (min 20 letras)</small>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-md-5 izq">
+          <label>Categoria:</label>
+          <select id="categoria" name="categoria" class="form-select" formControlName="categoria">
+            <option *ngFor="let categoria of categorias" [ngValue]="categoria.nombre">{{categoria.nombre}}</option>
+          </select>
+          <small *ngIf="categoriaNoValido" class="text-danger">Debe escoger una categoria</small>
+        </div>
+
+        <div class="form-group col-md-5 der">
+          <label>Imagen:</label>
+          <select id="imagen" name="imagen" class="form-select" formControlName="imagen">
+            <option *ngFor="let imagen of imagenes" [ngValue]="imagen.valor">{{imagen.nombre}}</option>
+          </select>
+          <small *ngIf="imagenNoValido" class="text-danger">Debe escoger una imagen</small>
+        </div>
+      </div>
+
+      <br>
+      <div class="d-flex justify-content-center">
+        <input type="submit" class="btn btn-info" value="Enviar">
+      </div>
+    </form>
+
+    <br>
+    <div *ngIf="error" class="error-registro">
+      El producto no pudo ser creado
+    </div>
+
+  </div>
+
+</div>

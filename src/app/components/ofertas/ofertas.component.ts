@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from "@angular/platform-browser";
 import { ApiService } from 'src/app/servicios/api.service';
+import { SesionService } from 'src/app/servicios/sesion.service';
 
 @Component({
   selector: "app-ofertas",
@@ -18,7 +19,7 @@ export class OfertasComponent implements OnInit {
   // day = this.date.getDate();
   // hoy = "";
 
-  constructor(private titleService: Title, private apiService:ApiService) {
+  constructor(private titleService: Title, private apiService:ApiService, public sesionService:SesionService) {
     this.titleService.setTitle("NJA - Ofertas");
 
     // this.hoy = `${this.year}-${this.month}-${this.day}`;
@@ -31,7 +32,7 @@ export class OfertasComponent implements OnInit {
       // console.log(this.ofertasResponse);
 
       this.ofertasResponse.forEach((oferta) => {
-        if (oferta.activo == "S" && oferta.producto.cantidad > 0) this.ofertas.push(oferta);
+        if (oferta.activo == "S" && oferta.producto.activo == "S" && oferta.producto.cantidad > 0) this.ofertas.push(oferta);
       });
       // console.log("ofertas");
       // console.log(this.ofertas);

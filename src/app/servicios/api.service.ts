@@ -10,7 +10,7 @@ export class ApiService {
 
   url:string = "http://localhost:8080/"
 
-  constructor(private httpCliente:HttpClient) { }
+  constructor(private httpCliente:HttpClient, private sesionService: SesionService) { }
 
   login(username:string, password:string) {
     const peticion = `${this.url}usuarios/login`;
@@ -27,16 +27,14 @@ export class ApiService {
     }));
   }
 
-  addUsuario(username:string, correo:string, telefono:number, password:string){
-
+  addUsuario(username:string, correo:string, password:string) {
     const peticion = `${this.url}usuarios/registrar`;
 
     const usuario:any = {
       "usuario": username,
       password,
       correo,
-      telefono,
-      "rol": 1,
+      "rol": 2,
       "activo": "S"
     };
 
@@ -68,7 +66,7 @@ export class ApiService {
   }
 
   getProductos() {
-    const peticion = `${this.url}productos`;
+    const peticion = `${this.url}productos/sf`;
 
     const headers:HttpHeaders = new HttpHeaders({'Content-Type': 'application/json;charset="utf-8"'});
 
@@ -78,7 +76,7 @@ export class ApiService {
   }
 
   getProductosCategoria(categoria:string) {
-    const peticion = `${this.url}productos/cat/${categoria}`;
+    const peticion = `${this.url}productos/sf/categoria/${categoria}`;
 
     const headers:HttpHeaders = new HttpHeaders({'Content-Type': 'application/json;charset="utf-8"'});
 
@@ -87,8 +85,93 @@ export class ApiService {
     }));
   }
 
-  sendContactenos(nombre:string, email:string, asunto:string, mensaje:string, leido:string) {
+  addProducto(nombre:string, marca:string, color:string, precio:number, categoria:string, cantidad:number, imagen:string, descripcion:string) {
+    const peticion = `${this.url}productos/cf`;
 
+    const producto:any = {
+      "id": 0,
+      "usuario": {
+        "id": this.sesionService.getUsuario().id
+      },
+      nombre,
+      marca,
+      color,
+      precio,
+      categoria,
+      cantidad,
+      imagen,
+      descripcion,
+      "activo": "S",
+    }
+
+    const headers:HttpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json;charset="utf-8"',
+      'Authorization': 'Bearer '+this.sesionService.getUsuario().token
+    });
+
+    return this.httpCliente.post(peticion, producto, {headers}).pipe(map((data:any) => {
+      return data;
+    }));
+  }
+
+  getProductosUsuario() {
+    const peticion = `${this.url}productos/cf/usuario`;
+
+    const usuario:any = {
+      id: this.sesionService.getUsuario().id,
+      "usuario": "",
+      password: "",
+      correo: "",
+      "rol": 0,
+      "activo": ""
+    };
+
+    const headers:HttpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json;charset="utf-8"',
+      'Authorization': 'Bearer '+this.sesionService.getUsuario().token
+    });
+
+    return this.httpCliente.post(peticion, usuario, { headers }).pipe(map((data:any) => {
+      return data;
+    }));
+  }
+
+  getProductoUsuario(id:number) {
+    const peticion = `${this.url}productos/cf/${id}/usuario`;
+
+    const usuario:any = {
+      id: this.sesionService.getUsuario().id,
+      "usuario": "",
+      password: "",
+      correo: "",
+      "rol": 0,
+      "activo": ""
+    };
+
+    const headers:HttpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json;charset="utf-8"',
+      'Authorization': 'Bearer '+this.sesionService.getUsuario().token
+    });
+
+    return this.httpCliente.post(peticion, usuario, { headers }).pipe(map((data:any) => {
+      return data;
+    }));
+  }
+
+  updateProducto(producto:any) {
+    const peticion = `${this.url}productos/cf`;
+
+    const headers:HttpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json;charset="utf-8"',
+      'Authorization': 'Bearer '+this.sesionService.getUsuario().token
+    });
+
+    return this.httpCliente.post(peticion, producto, { headers }).pipe(map((data:any) => {
+      return data;
+    }));
+  }
+
+  sendContactenos(nombre:string, email:string, asunto:string, mensaje:string, leido:string) {
     const peticion = `${this.url}contactenos`;
 
     const contacto:any = {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
+import { SesionService } from 'src/app/servicios/sesion.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,7 @@ import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common'
 })
 export class HeaderComponent implements OnInit {
   location: Location;
-  constructor(location: Location) {
+  constructor(location: Location, public sesionService:SesionService) {
     this.location = location;
   }
 

@@ -18,7 +18,7 @@
 
     <form action="" [formGroup]="formulario" (ngSubmit)="guardarDatos()" autocomplete="off">
       <div class="row">
-        <div class="col-md-5 name">
+        <div class="col-md-5 izq">
           <label>Tu nombre:</label>
           <input type="text"
           id="nombre"
@@ -30,7 +30,7 @@
           <small *ngIf="nombreNoValido" class="text-danger">Debe ingresar su nombre</small>
         </div>
 
-        <div class="col-md-5 mail">
+        <div class="col-md-55 der">
           <label>Tu email:</label>
           <input type="email"
           id="email"

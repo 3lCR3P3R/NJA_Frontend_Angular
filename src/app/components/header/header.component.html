@@ -1,4 +1,4 @@
-<header class="header" [ngStyle]="{'display':location.path() === '/contactenos' ? 'none' : 'block'}">
+<header class="header" [ngStyle]="{'display':location.path() === '/contactenos' ? 'none' : location.path() === '/login' ? 'none' : location.path() === '/registro' ? 'none' : 'block'}">
   <div class="container-fluid d-flex justify-content-center">
     <div class="row">
       <div class="col">
@@ -13,15 +13,19 @@
   <div class="container-fluid d-flex justify-content-center" style="padding-bottom: 15px;">
     <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
       <div class="container-fluid">
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
             <li class="nav-item">
               <a class="nav-link" [routerLink]="['/inicio']" routerLinkActive="active">Inicio</a>
             </li>
+
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Hombre</a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -29,6 +33,7 @@
                 <li><a class="dropdown-item" [routerLink]="['/productos']">Pantalones</a></li>
               </ul>
             </li>
+
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mujer</a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -39,11 +44,9 @@
                 <li><a class="dropdown-item" [routerLink]="['/productos']">Vestidos</a></li>
               </ul>
             </li>
+
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                Niña/o
-              </a>
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Niña/o</a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" [routerLink]="['/productos']">Blusas</a></li>
                 <li><a class="dropdown-item" [routerLink]="['/productos']">Camisetas</a></li>
@@ -52,12 +55,35 @@
                 <li><a class="dropdown-item" [routerLink]="['/productos']">Vestidos</a></li>
               </ul>
             </li>
+
             <li class="nav-item">
               <a class="nav-link" [routerLink]="['/ofertas']" routerLinkActive="active">Ofertas</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/productos']" routerLinkActive="active">Vender</a>
+
+            <!-- <li class="nav-item" *ngIf="sesionService.getUsuario().id!=0 && sesionService.getUsuario().rol==3">
+              <a class="nav-link" [routerLink]="['/vender']" routerLinkActive="active">Vender</a>
+            </li> -->
+
+            <li class="nav-item dropdown" *ngIf="sesionService.getUsuario().id!=0 && sesionService.getUsuario().rol==2">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" [ngClass]="{'active':location.path() === '/productos-add' ? true : location.path() === '/productos-list' ? true : false}">| Vender</a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" [routerLink]="['/productos-add']" routerLinkActive="active">Vender un producto</a></li>
+                <li><a class="dropdown-item" [routerLink]="['/productos-list']" routerLinkActive="active">Tus productos</a></li>
+              </ul>
             </li>
+
+            <li class="nav-item dropdown" *ngIf="sesionService.getUsuario().id == 0">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">| Sesion</a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" [routerLink]="['/login']" routerLinkActive="active">Iniciar Sesion</a></li>
+                <li><a class="dropdown-item" [routerLink]="['/registro']" routerLinkActive="active">Registrate</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item" *ngIf="sesionService.getUsuario().id ?? 0 != 0">
+              <a class="nav-link" [routerLink]="['/cerrar-sesion']">Cerrar Sesion</a>
+            </li>
+
           </ul>
         </div>
       </div>

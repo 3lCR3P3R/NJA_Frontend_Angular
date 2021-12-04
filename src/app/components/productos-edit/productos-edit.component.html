@@ -1,0 +1,73 @@
+<img src="./assets/img/ropafondo.jpg" alt="Contactenos" class="Principal">
+
+<div class="ebody">
+
+  <div *ngIf="producto.id==null">
+    <div class="text-center">
+      <h2 class="apiNotWork">No hay producto</h2>
+    </div>
+  </div>
+
+  <div class="fcontacto" *ngIf="producto.id != null">
+    <div class="logo">
+      <img src="./assets/img/productos/{{producto.imagen}}" alt="Contactenos" height="350" style="width: 50%;">
+    </div>
+
+    <div class="jumbotron">
+      <h1>{{producto.nombre}}</h1>
+    </div>
+
+    <form action="" [formGroup]="formulario" (ngSubmit)="actualizarProducto()" autocomplete="off">
+
+      <div class="row">
+        <div class="form-group col-md-5 izq">
+          <label>Precio:</label>
+          <input type="text"
+            placeholder="10000"
+            [minlength]="5"
+            id="precio"
+            name="precio"
+            class="form-control"
+            formControlName="precio"
+            onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"
+            [class.is-invalid]="precioNoValido">
+          <small *ngIf="precioNoValido" class="text-danger">Debe ingresar la precio (min valor 10000)</small>
+        </div>
+
+        <div class="form-group col-md-55 der">
+          <label>Cantidad:</label>
+          <input type="text"
+            placeholder="1"
+            [minlength]="1"
+            [maxlength]="2"
+            id="cantidad"
+            name="cantidad"
+            class="form-control"
+            formControlName="cantidad"
+            onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"
+            [class.is-invalid]="cantidadNoValido">
+        <small *ngIf="cantidadNoValido" class="text-danger">Debe ingresar el cantidad (min 1 /max 99)</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Estado:</label>
+        <select name="activo" id="activo" class="form-select" formControlName="activo">
+          <option [ngValue]="activado" [selected]="producto.activo == 'S'">Activo</option>
+          <option [ngValue]="inactivo" [selected]="producto.activo == 'N'">Inactivo</option>
+        </select>
+        <small *ngIf="activoNoValido" class="text-danger">Debe escoger un estado</small>
+      </div>
+
+      <br>
+      <div class="card-footer">
+        <input type="submit" class="btn btn-primary" value="Actualizar">
+        &nbsp; &nbsp;
+        <input type="button" class="btn btn-danger" (click)="regresar()" value="Cancelar">
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

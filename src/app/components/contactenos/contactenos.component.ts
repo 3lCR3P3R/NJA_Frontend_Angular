@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Title} from "@angular/platform-browser";
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/servicios/api.service';
+import { SesionService } from 'src/app/servicios/sesion.service';
 
 @Component({
   selector: 'app-contactenos',
@@ -17,7 +18,7 @@ export class ContactenosComponent implements OnInit {
 
   leido:string = "N";
 
-  constructor(private formBuilder:FormBuilder, private titleService:Title, private apiService:ApiService) {
+  constructor(private formBuilder:FormBuilder, private titleService:Title, private apiService:ApiService, public sesionService:SesionService) {
     this.titleService.setTitle("NJA - Contactenos");
 
     this.formulario = this.formBuilder.group({

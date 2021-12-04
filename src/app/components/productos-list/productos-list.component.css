@@ -1,0 +1,111 @@
+/* Cards Productos */
+
+main {
+  margin-bottom: 30px;
+}
+
+.apiNotWork {
+  font-size: 36px;
+  font-family: "Courier New", Courier, monospace;
+  position: relative;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.productos {
+  font-size: 36px;
+  font-family: "Courier New", Courier, monospace;
+  position: relative;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.productos::after {
+  content: "";
+  width: 80%;
+  border-bottom: 1px solid #8acdea;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.card-body {
+  border-end-end-radius: 1.5rem;
+  background-color: #ffffff;
+}
+
+.card {
+  border-end-end-radius: 2rem;
+  box-shadow: 0 0 10px 2px rgba(255, 255, 255, 1);
+  /*width: 22rem;*/
+}
+
+.card-img-top {
+  height: 350px;
+  width: 100%;
+}
+
+.card-title {
+  font-family: "Courier New", Courier, monospace;
+  padding: 15px;
+  background-color: #8acdea;
+  color: #fff;
+  font-weight: 550;
+  margin-bottom: 0px !important;
+}
+
+.col-card {
+  padding-bottom: 20px;
+}
+
+.card-text {
+  font-size: 15px;
+}
+
+.btn-card {
+  background-color: #8acdea;
+  color: #ffffff;
+  box-shadow: 0 0 3px 1.5px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* .card {
+  max-width: 250px;
+} */
+
+.card-title {
+  font-weight: 550;
+}
+
+/* .card-img-top {
+  height: 300px;
+} */
+
+.card-text {
+  width: 200px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* Media Queries Cards */
+
+/* Anchos maximo por tamaño de pantallas */
+
+@media (min-width: 769px) and (max-width: 1000px) {
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+  .container,
+  .container-sm {
+    max-width: 680px;
+  }
+}
