@@ -16,6 +16,7 @@ export class RegistroComponent implements OnInit {
   formulario: FormGroup;
 
   error:boolean =  false;
+  duplicado:boolean =  false;
   enviado:boolean = false;
 
   constructor(private formBuilder:FormBuilder, private titleService:Title, private apiService:ApiService, public sesionService:SesionService, private router:Router) {
@@ -45,9 +46,9 @@ export class RegistroComponent implements OnInit {
 
   guardarDatos():any {
     if(this.formulario.invalid){
-      Object.values(this.formulario.controls).forEach(control=>{
+      Object.values(this.formulario.controls).forEach(control => {
         control.markAsTouched();
-      })
+      });
 
       return;
     }
@@ -61,14 +62,17 @@ export class RegistroComponent implements OnInit {
     }
 
     this.apiService.addUsuario(this.formulario.value.usuario, this.formulario.value.email, this.formulario.value.password).subscribe((response) => {
-      console.log(response)
+      // console.log(response)
       usuario = JSON.parse(JSON.stringify(response));
-      console.log(usuario);
-      if(usuario.id==0) {
+      // console.log(usuario);
+
+      if(usuario.id == 0) {
         this.error = true;
-      }
-      else{
+      } else if (usuario.id == null){
+        this.duplicado = true;
+      } else {
         this.error = false;
+        this.duplicado = false;
         this.enviado = true;
       }
     });

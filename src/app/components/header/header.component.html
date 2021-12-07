@@ -26,7 +26,11 @@
               <a class="nav-link" [routerLink]="['/inicio']" routerLinkActive="active">Inicio</a>
             </li>
 
-            <li class="nav-item dropdown">
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/productos']" routerLinkActive="active">Productos</a>
+            </li>
+
+            <!-- <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Hombre</a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" [routerLink]="['/productos']">Camisetas</a></li>
@@ -54,7 +58,7 @@
                 <li><a class="dropdown-item" [routerLink]="['/productos']">Pantalones</a></li>
                 <li><a class="dropdown-item" [routerLink]="['/productos']">Vestidos</a></li>
               </ul>
-            </li>
+            </li> -->
 
             <li class="nav-item">
               <a class="nav-link" [routerLink]="['/ofertas']" routerLinkActive="active">Ofertas</a>
@@ -65,10 +69,11 @@
             </li> -->
 
             <li class="nav-item dropdown" *ngIf="sesionService.getUsuario().id!=0 && sesionService.getUsuario().rol==2">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" [ngClass]="{'active':location.path() === '/productos-add' ? true : location.path() === '/productos-list' ? true : false}">| Vender</a>
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" [ngClass]="{'active':location.path() === '/productos-add' ? true : location.path() === '/productos-list' ? true : false}">| {{sesionService.getUsuario().usuario}}</a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" [routerLink]="['/productos-add']" routerLinkActive="active">Vender un producto</a></li>
                 <li><a class="dropdown-item" [routerLink]="['/productos-list']" routerLinkActive="active">Tus productos</a></li>
+                <li><a class="dropdown-item" [routerLink]="['/cerrar-sesion']" routerLinkActive="active">Cerrar Sesion</a></li>
               </ul>
             </li>
 
@@ -80,9 +85,9 @@
               </ul>
             </li>
 
-            <li class="nav-item" *ngIf="sesionService.getUsuario().id ?? 0 != 0">
+            <!-- <li class="nav-item" *ngIf="sesionService.getUsuario().id ?? 0 != 0">
               <a class="nav-link" [routerLink]="['/cerrar-sesion']">Cerrar Sesion</a>
-            </li>
+            </li> -->
 
           </ul>
         </div>

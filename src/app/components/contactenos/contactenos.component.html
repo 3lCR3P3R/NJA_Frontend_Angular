@@ -1,7 +1,7 @@
 <img src="./assets/img/ropafondo.jpg" alt="Contactenos" class="Principal">
 
 <div class="ebody">
-  <a class="nav-link" href="../index.html">Volver a Inicio
+  <a class="nav-link" [routerLink]="['/inicio']">Volver a Inicio
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-square-fill" viewBox="0 0 16 16">
       <path d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1z" />
     </svg>
@@ -17,30 +17,36 @@
     </div>
 
     <form action="" [formGroup]="formulario" (ngSubmit)="guardarDatos()" autocomplete="off">
+
       <div class="row">
+
         <div class="col-md-5 izq">
           <label>Tu nombre:</label>
           <input type="text"
           id="nombre"
           name="nombre"
           class="form-control"
+          [minlength]="3"
+          [maxlength]="50"
           formControlName="nombre"
           placeholder="Jhon Doe"
           [class.is-invalid]="nombreNoValido">
-          <small *ngIf="nombreNoValido" class="text-danger">Debe ingresar su nombre</small>
+          <small *ngIf="nombreNoValido" class="text-danger">Debe ingresar su nombre (min 3 letras)</small>
         </div>
 
         <div class="col-md-55 der">
           <label>Tu email:</label>
           <input type="email"
-          id="email"
-          name="email"
-          class="form-control"
-          formControlName="email"
-          placeholder="ejemplo@mail.com"
-          [class.is-invalid]="emailNoValido">
+            id="email"
+            name="email"
+            class="form-control"
+            formControlName="email"
+            [maxlength]="100"
+            placeholder="ejemplo@mail.com"
+            [class.is-invalid]="emailNoValido">
           <small *ngIf="emailNoValido" class="text-danger">Debe ingresar su correo electronico</small>
         </div>
+
       </div>
 
       <div class="form-group">
@@ -49,9 +55,11 @@
           id="asunto"
           name="asunto"
           class="form-control"
+          [minlength]="5"
+          [maxlength]="150"
           formControlName="asunto"
           [class.is-invalid]="asuntoNoValido">
-        <small *ngIf="asuntoNoValido" class="text-danger">Debe ingresar el asunto del mensaje</small>
+        <small *ngIf="asuntoNoValido" class="text-danger">Debe ingresar el asunto del mensaje (min 5 letras)</small>
       </div>
 
       <div class="form-group">
@@ -61,8 +69,10 @@
           name="mensaje"
           class="form-control"
           formControlName="mensaje"
+          [minlength]="20"
+          [maxlength]="2000"
           [class.is-invalid]="mensajeNoValido" cols="10" rows="3" class="form-control"></textarea>
-        <small *ngIf="mensajeNoValido" class="text-danger">Debe ingresar un mensaje correcto</small>
+        <small *ngIf="mensajeNoValido" class="text-danger">Debe ingresar un mensaje correcto (min 20 letras)</small>
       </div>
 
       <br>

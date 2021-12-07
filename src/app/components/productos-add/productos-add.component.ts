@@ -20,10 +20,10 @@ export class ProductosAddComponent implements OnInit {
   categorias:any[] = [];
   categoriasResponse:any[] = [];
   imagenes:any[] = [{nombre: "default", valor: "default.png"},
-    {nombre: "producto1", valor: "producto1.jpg"},
-    {nombre: "producto2", valor: "producto2.png"},
-    {nombre: "producto3", valor: "producto3.jpg"},
-    {nombre: "producto4", valor: "producto4.jpg"}
+    {nombre: "Camisa Roja", valor: "producto1.jpg"},
+    {nombre: "Camisa Cafe", valor: "producto2.png"},
+    {nombre: "Vestido", valor: "producto3.jpg"},
+    {nombre: "Pantalon", valor: "producto4.jpg"}
   ];
 
   constructor(private formBuilder:FormBuilder, private titleService:Title, private apiService:ApiService, public sesionService:SesionService, private router:Router) {
